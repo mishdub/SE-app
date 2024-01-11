@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   searchButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#FFA500',
     padding: 10,
     borderRadius: 5,
   },

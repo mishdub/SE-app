@@ -12,6 +12,8 @@ const EditPetProfileScreen = ({ route, navigation }) => {
   const [medications, setMedications] = useState(route.params.medications || '');
   const [allergies, setAllergies] = useState(route.params.allergies || '');
   const [petImage, setPetImage] = useState('https://placekitten.com/200/200'); // Default pet image
+  const [medicalHistoryImage, setMedicalHistoryImage] = useState('https://example.com/medical_history_image.png'); // Default medical history image
+
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
@@ -34,10 +36,10 @@ const EditPetProfileScreen = ({ route, navigation }) => {
       updatedAnimalType: animalType,
       updatedAge: age,
       updatedGender: gender,
-      lastVaccinationDate,
-      lastVetVisit,
-      medications,
-      allergies,
+      lastVaccinationDate: lastVaccinationDate,
+      lastVetVisit: lastVetVisit,
+      medications: medications,
+      allergies: allergies,
       updatedPetImage: petImage,
     });
   };
@@ -55,13 +57,11 @@ const EditPetProfileScreen = ({ route, navigation }) => {
         <TabButton tab="petInfo" title="Pet Info" />
         <TabButton tab="medicalHistory" title="Medical History" />
       </View>
-
       {activeTab === 'petInfo' && (
         <View>
           <TouchableOpacity onPress={handleImagePicker}>
             <Image source={{ uri: petImage }} style={styles.petImage} />
           </TouchableOpacity>
-
           <View>
             <Text style={styles.label}>Pet's Name:</Text>
             <TextInput
@@ -95,11 +95,17 @@ const EditPetProfileScreen = ({ route, navigation }) => {
               onChangeText={(text) => setGender(text)}
             />
           </View>
+
         </View>
       )}
 
       {activeTab === 'medicalHistory' && (
         <View>
+          <TouchableOpacity onPress={handleImagePicker}>
+            <Image source={{ uri: petImage }} style={styles.petImage} />
+          </TouchableOpacity>
+
+          <View>
           <Text style={styles.label}>Last Vaccination Date:</Text>
           <TextInput
             style={styles.input}
@@ -131,6 +137,7 @@ const EditPetProfileScreen = ({ route, navigation }) => {
             value={allergies}
             onChangeText={(text) => setAllergies(text)}
           />
+          </View>
         </View>
       )}
 
@@ -140,11 +147,18 @@ const EditPetProfileScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     padding: 20,
+    backgroundColor: '#FFFFFF', // White
   },
   tabsContainer: {
     flexDirection: 'row',
@@ -156,20 +170,24 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 2,
     borderBottomColor: 'transparent',
+
   },
   activeTab: {
-    borderBottomColor: 'blue', // Change color as needed
+    borderBottomColor: '#FFA500', // Bright orange
+
   },
   tabButtonText: {
     fontSize: 16,
   },
   input: {
     height: 40,
-    width: '80%',
-    borderColor: 'gray',
+    width: '100%', // Updated to span the entire width
+    borderColor: '#FFA500',
     borderWidth: 1,
     marginBottom: 20,
     paddingLeft: 10,
+    borderRadius: 20, // Added to make it round
+    backgroundColor: '#FFFFFF', // White
   },
   petImage: {
     width: 120,

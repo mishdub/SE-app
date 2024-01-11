@@ -45,7 +45,7 @@ const PetProfileScreen = ({ route, navigation }) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={{ flexGrow: 1 }}>
       <TouchableOpacity onPress={navigateToEditScreen} style={styles.editButton}>
         <Text style={tw`text-2xl font-semibold pr-2 tracking-wide`}>Edit Profile</Text>
       </TouchableOpacity>
@@ -61,18 +61,20 @@ const PetProfileScreen = ({ route, navigation }) => {
         <Text style={tw`text-2xl p-3 tracking-wide font-bold`}>{petName}</Text>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{animalType || '---'}</Text>
           <Text style={styles.label}>Animal Type:</Text>
+          <Text style={styles.value}>{animalType || '---'}</Text>
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{age || '---'}</Text>
           <Text style={styles.label}>Age:</Text>
+          <Text style={styles.value}>{age || '---'}</Text>
+
+
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{gender || '---'}</Text>
           <Text style={styles.label}>Gender:</Text>
+          <Text style={styles.value}>{gender || '---'}</Text>
         </View>
 
         {/* Medical History Section */}
@@ -81,23 +83,26 @@ const PetProfileScreen = ({ route, navigation }) => {
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{lastVaccinationDate || '---'}</Text>
           <Text style={styles.label}>Last Vaccination Date:</Text>
+          <Text style={styles.value}>{lastVaccinationDate || '---'}</Text>
+
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{lastVetVisit || '---'}</Text>
           <Text style={styles.label}>Last Vet Visit:</Text>
+          <Text style={styles.value}>{lastVetVisit || '---'}</Text>
+
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{medications || '---'}</Text>
           <Text style={styles.label}>Medications:</Text>
+          <Text style={styles.value}>{medications || '---'}</Text>
         </View>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.value}>{allergies || '---'}</Text>
           <Text style={styles.label}>Allergies:</Text>
+          <Text style={styles.value}>{allergies || '---'}</Text>
+
         </View>
 
         {/* Find Vet Button */}
@@ -115,7 +120,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   editButton: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse', // Change from 'row' to 'row-reverse'
     alignItems: 'center',
     marginTop: 10,
   },
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
     justifyContent: 'center',
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#FFA500',
     padding: 10,
     borderRadius: 8,
   },
