@@ -59,58 +59,72 @@ const EditPetProfileScreen = ({ route, navigation }) => {
       {activeTab === 'petInfo' && (
         <View>
           <TouchableOpacity onPress={handleImagePicker}>
-            <Image
-              source={{ uri: petImage }}
-              style={styles.petImage}
-            />
+            <Image source={{ uri: petImage }} style={styles.petImage} />
           </TouchableOpacity>
-          <TextInput
-            style={styles.input}
-            placeholder="Pet's Name"
-            value={petName}
-            onChangeText={(text) => setPetName(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Animal Type"
-            value={animalType}
-            onChangeText={(text) => setAnimalType(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Age"
-            value={age}
-            onChangeText={(text) => setAge(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Gender"
-            value={gender}
-            onChangeText={(text) => setGender(text)}
-          />
+
+          <View>
+            <Text style={styles.label}>Pet's Name:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Pet's Name"
+              value={petName}
+              onChangeText={(text) => setPetName(text)}
+            />
+
+            <Text style={styles.label}>Animal Type:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Animal Type"
+              value={animalType}
+              onChangeText={(text) => setAnimalType(text)}
+            />
+
+            <Text style={styles.label}>Age:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Age"
+              value={age}
+              onChangeText={(text) => setAge(text)}
+            />
+
+            <Text style={styles.label}>Gender:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Gender"
+              value={gender}
+              onChangeText={(text) => setGender(text)}
+            />
+          </View>
         </View>
       )}
 
       {activeTab === 'medicalHistory' && (
         <View>
+          <Text style={styles.label}>Last Vaccination Date:</Text>
           <TextInput
             style={styles.input}
             placeholder="Last Vaccination Date"
             value={lastVaccinationDate}
             onChangeText={(text) => setLastVaccinationDate(text)}
           />
+
+          <Text style={styles.label}>Last Vet Visit:</Text>
           <TextInput
             style={styles.input}
             placeholder="Last Vet Visit"
             value={lastVetVisit}
             onChangeText={(text) => setLastVetVisit(text)}
           />
+
+          <Text style={styles.label}>Medications:</Text>
           <TextInput
             style={styles.input}
             placeholder="Medications"
             value={medications}
             onChangeText={(text) => setMedications(text)}
           />
+
+          <Text style={styles.label}>Allergies:</Text>
           <TextInput
             style={styles.input}
             placeholder="Allergies"
@@ -162,6 +176,11 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
     marginBottom: 20,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
 });
 
