@@ -11,6 +11,7 @@ const EditPetProfileScreen = ({ route, navigation }) => {
   const [lastVetVisit, setLastVetVisit] = useState(route.params.lastVetVisit || '');
   const [medications, setMedications] = useState(route.params.medications || '');
   const [allergies, setAllergies] = useState(route.params.allergies || '');
+  const [petImage, setPetImage] = useState('https://placekitten.com/200/200'); // Default pet image
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
@@ -37,7 +38,15 @@ const EditPetProfileScreen = ({ route, navigation }) => {
       lastVetVisit,
       medications,
       allergies,
+      updatedPetImage: petImage,
     });
+  };
+
+  const handleImagePicker = () => {
+    // Logic to open image picker and update petImage state
+    // You need to implement the image picker functionality here
+    // Example:
+    // openImagePicker().then((selectedImage) => setPetImage(selectedImage));
   };
 
   return (
@@ -49,6 +58,12 @@ const EditPetProfileScreen = ({ route, navigation }) => {
 
       {activeTab === 'petInfo' && (
         <View>
+          <TouchableOpacity onPress={handleImagePicker}>
+            <Image
+              source={{ uri: petImage }}
+              style={styles.petImage}
+            />
+          </TouchableOpacity>
           <TextInput
             style={styles.input}
             placeholder="Pet's Name"
@@ -141,6 +156,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingLeft: 10,
+  },
+  petImage: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: 20,
   },
 });
 
